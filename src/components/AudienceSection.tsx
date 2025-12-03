@@ -5,7 +5,7 @@ import { AUDIENCE_ITEMS } from "../content/audienceData";
 
 export const AudienceSection = () => {
   return (
-    <section id="solutions" className="py-24 bg-[#0a0a0a] relative border-t border-white/5">
+    <section id="solutions" className="py-24  relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
@@ -14,7 +14,7 @@ export const AudienceSection = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-blue-500 font-bold tracking-widest text-xs uppercase mb-4"
+            className="text-highlight-100 font-bold tracking-widest text-xs uppercase mb-4"
           >
             Who is ClawScan For?
           </motion.div>

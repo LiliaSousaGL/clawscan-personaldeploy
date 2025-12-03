@@ -20,7 +20,7 @@ const itemVariants = {
 
 export const Hero = () => {
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-20 pb-16 bg-[#0a0a0a] border-b border-white/5">
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-20 pb-16  border-b border-white/5">
       
       {/* 1. Main Hero Content */}
       <motion.div
@@ -34,8 +34,8 @@ export const Hero = () => {
           variants={itemVariants}
           className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.1]"
         >
-          AI-powered email screening for <br className="hidden md:block" />
-          <span className="text-white">Competition Law and beyond.</span>
+          AI-powered email screening for 
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-highlight-60 to-highlight-100"> Competition Law </span>and beyond.
         </motion.h1>
 
         {/* Subtitle */}
@@ -52,13 +52,14 @@ export const Hero = () => {
           variants={itemVariants}
           className="flex flex-col sm:flex-row items-center gap-4"
         >
-          <Link href="#contact" passHref legacyBehavior>
+          <Link href="https://webforms.pipedrive.com/f/czB6kfSUP47QQ6DUiPGb0mOHB33foUK8gCqdoksXbaT9STXOgclTLdLwlbA3lbYhhx" passHref>
             <Button primary>
+              
               Request a demo
             </Button>
           </Link>
           
-          <Link href="#solution" passHref legacyBehavior>
+          <Link href="#solution" passHref >
             <Button>
               See how it works
             </Button>
@@ -77,7 +78,7 @@ export const Hero = () => {
       >
         {/* Feature 1 */}
         <div className="space-y-3">
-          <div className="text-blue-500 mb-2">
+          <div className="text-highlight-100 mb-2">
             {/* Simple Gavel/Hammer Icon SVG */}
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m14 13-7.5 7.5c-1.5 1.5-3.5 1.5-5 0s-1.5-3.5 0-5L9 8"/><path d="m17 10 5 5"/><path d="m21 21-5-5"/><path d="m5 17 5-5"/></svg>
           </div>
@@ -89,7 +90,7 @@ export const Hero = () => {
 
         {/* Feature 2 */}
         <div className="space-y-3">
-          <div className="text-blue-500 mb-2">
+          <div className="text-highlight-100 mb-2">
             {/* Gauge/Speed Icon SVG */}
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
           </div>
@@ -101,7 +102,7 @@ export const Hero = () => {
 
         {/* Feature 3 */}
         <div className="space-y-3">
-          <div className="text-blue-500 mb-2">
+          <div className="text-highlight-100 mb-2">
             {/* Shield Icon SVG */}
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
           </div>

@@ -5,7 +5,7 @@ import { SOLUTION_STEPS } from "../content/solutionSteps";
 
 export const SolutionSection = () => {
   return (
-    <section id="solution" className="py-24 bg-[#0a0a0a] relative border-t border-white/5">
+    <section id="" className="py-24  relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* 1. Header */}
@@ -36,7 +36,7 @@ export const SolutionSection = () => {
               className="flex flex-col items-center text-center"
             >
               {/* Icon Circle */}
-              <div className="w-16 h-16 rounded-full bg-[#0a0a0a] border border-blue-500/30 flex items-center justify-center text-blue-400 mb-6 shadow-[0_0_15px_rgba(59,130,246,0.2)] z-10">
+              <div className="w-16 h-16 rounded-full border border-highlight-800/20 flex items-center justify-center text-highlight-100 mb-6 shadow-[0_0_15px_rgba(59,130,246,0.2)] z-10">
                 {step.icon}
               </div>
 

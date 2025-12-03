@@ -5,7 +5,7 @@ import { GROUPS_ITEMS } from "../content/groupsData";
 
 export const GroupsSection = () => {
   return (
-    <section className="py-24 bg-[#0a0a0a] border-t border-white/5 pb-32">
+    <section className="py-24  border-t border-white/5 pb-32">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
@@ -14,7 +14,7 @@ export const GroupsSection = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-blue-500 font-bold tracking-widest text-xs uppercase mb-4"
+            className="text-highlight-100  font-bold tracking-widest text-xs uppercase mb-4"
           >
             Built for Groups
           </motion.div>

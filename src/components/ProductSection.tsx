@@ -7,7 +7,7 @@ import { FEATURES } from "../content/features";
 
 export const ProductSection = () => {
   return (
-    <section id="product" className="py-24 bg-[#0a0a0a] relative overflow-hidden">
+    <section id="product" className="py-24  relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Header */}
@@ -35,7 +35,7 @@ export const ProductSection = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {FEATURES.map((feature, index) => (
             <motion.div
               key={feature.title}

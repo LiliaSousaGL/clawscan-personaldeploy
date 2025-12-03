@@ -13,10 +13,14 @@ export const Button = ({ children, primary = false }: ButtonProps) => (
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
     className={`
-      px-8 py-3 rounded-full text-base font-semibold cursor-pointer transition-colors duration-200
-      ${primary
-        ? 'bg-gradient-to-r from-blue-600 to-purple-700 text-white shadow-lg hover:from-blue-700 hover:to-purple-800'
-        : 'bg-white/10 text-gray-300 border border-white/20 hover:bg-white/20'
+      px-8 py-3 rounded-lg text-base font-semibold cursor-pointer transition-colors duration-200
+      
+      ${primary 
+        // 📌 NEW COLORS: Use highlight-100 and petrol-80 for the gradient
+        ? 'bg-gradient-to-r from-highlight-100 to-petrol-80 text-white shadow-lg hover:from-highlight-80 hover:to-petrol-100' 
+        
+        // Secondary/Default Style
+        : 'bg-white/10 text-gray-300  hover:bg-white/20'
       }
     `}
   >

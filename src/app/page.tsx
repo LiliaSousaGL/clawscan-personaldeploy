@@ -7,14 +7,17 @@ import { ControlCenter } from "../components/ControlCenter";
 import { ComparisonSection } from "../components/ComparisonSection";
 import { AudienceSection } from "../components/AudienceSection";
 import { GroupsSection } from "../components/GroupsSection";
-import { PricingSection } from "../components/PricingSection"; // <--- Import New Component
+import { PricingSection } from "../components/PricingSection";
+import { FAQSection } from "../components/FAQSection";
+import { ContactSection } from "../components/ContactSection";
+import { AboutSection } from "../components/AboutSection"; // <--- Import New Component
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Product Content */}
       <Hero />
-      <ClientLogos />
+
       <ProductSection />
       <SolutionSection />
       <ControlCenter />
@@ -27,10 +30,14 @@ export default function Home() {
       {/* Pricing Content */}
       <PricingSection />
 
-      {/* Contact Placeholder */}
-      <section id="contact" className="h-[50vh] flex items-center justify-center border-t border-white/5">
-        <h2 className="text-3xl text-gray-500">Contact Section Placeholder</h2>
-      </section>
+      {/* About & Contact Info (Placed before FAQ) */}
+      <AboutSection />
+      
+      {/* FAQ Content */}
+      <FAQSection />
+
+      {/* Final Call to Action Form */}
+      <ContactSection />
     </div>
   );
 }

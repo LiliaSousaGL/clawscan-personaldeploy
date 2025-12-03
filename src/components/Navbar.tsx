@@ -3,6 +3,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export const Navbar = () => {
   const navLinks = [
@@ -17,12 +18,20 @@ export const Navbar = () => {
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/70 border-b border-white/10"
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md  border-b border-white/10"
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold tracking-tighter text-white">
-          ClawScan
+      <Link href="/" className="flex items-center gap-2">
+          {/* 2. REPLACE TEXT with Image component */}
+          <Image
+            src="/images/clawscan-logo.png" // <--- Update this to your actual path
+            alt="ClawScan Logo"
+            width={50}  // Set actual width of your logo
+            height={50} // Set actual height of your logo
+            // You may need to adjust the width/height to fit your logo's size
+          />
+
         </Link>
 
         {/* Desktop Links */}
@@ -42,8 +51,8 @@ export const Navbar = () => {
         <div className="flex space-x-3">
             {/* Request a demo Button (Primary CTA) */}
             <Link
-              href="#contact"
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
+              href="https://webforms.pipedrive.com/f/czB6kfSUP47QQ6DUiPGb0mOHB33foUK8gCqdoksXbaT9STXOgclTLdLwlbA3lbYhhx"
+              className="bg-highlight-100 hover:bg-highlight-60 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
             >
               Request a demo
             </Link>

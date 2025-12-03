@@ -1,26 +1,47 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* --- 1. Cobalt Blue (Dark Navy) --- */
+  --color-cobalt-20: #CCD4DF;
+  --color-cobalt-40: #99A9BF;
+  --color-cobalt-60: #667F9F;
+  --color-cobalt-80: #33547F;
+  --color-cobalt-100: #002A5F; /* Main Dark Brand Color */
+
+  /* --- 2. Petrol Blue (Teal) --- */
+  --color-petrol-20: #CFE2E6;
+  --color-petrol-40: #9FC5D1;
+  --color-petrol-60: #70A8BA;
+  --color-petrol-80: #3F8BA3;
+  --color-petrol-100: #0F6E8C;
+
+  /* --- 3. Highlight Blue (Bright) --- */
+  --color-highlight-20: #DDEFF9;
+  --color-highlight-40: #AADFF9;
+  --color-highlight-60: #77CFF0;
+  --color-highlight-80: #44BFEB;
+  --color-highlight-100: #14AFE6; /* Bright Buttons/Links */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark Mode Theme Variables */
+:root {
+  --background: #07182d ; /* Deep dark background */
+  --foreground: #ededed; /* Light text */
 }
 
+/* Base Styles */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth; 
+}
+
+.max-w-2xl {
+    max-width: fit-content;
 }
