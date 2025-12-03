@@ -10,7 +10,11 @@ const itemVariants = {
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { type: "spring", stiffness: 100, damping: 20 } 
+    transition: { // <-- This transition block is now correctly placed
+      type: "spring", 
+      stiffness: 100, 
+      damping: 20 
+    } 
   },
 };
 
@@ -29,8 +33,8 @@ export const ClientLogos = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
-              variants={itemVariants}
-              transition={{ delay: index * 0.1 }}
+ 
+          
             >
               {/* Placeholder for the logo image */}
               <div className="h-10 w-32 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity border border-white/5 rounded bg-white/5">
