@@ -1,13 +1,10 @@
-// next.config.ts
+import type { NextConfig } from "next";
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // REMOVE: output: 'export'
-  // REMOVE: basePath: '/clawscan-website'
-  // REMOVE: assetPrefix: '/clawscan-website/'
+const nextConfig: NextConfig = {
+  /* We remove 'output: export' and 'basePath' so Vercel serves it at the root */
   
   images: {
-    // Keep unoptimized: true to fix the logo, but remove other clutter
+    // Keep this to ensure your logo loads without optimization errors
     unoptimized: true, 
   },
 };
