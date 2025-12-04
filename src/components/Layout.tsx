@@ -44,7 +44,7 @@ export const Layout = ({ children }: LayoutProps) => {
             
             {/* Logo/Branding Column (Col 1 & 2 on Desktop) */}
             <div className="col-span-2 space-y-4">
-          <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link href="/" className="flex items-center gap-2">
             <Image
               src="/images/clawscanlogo-img.png"
               alt="ClawScan Logo"
