@@ -1,4 +1,3 @@
-import { getTargetTriple } from "next/dist/build/swc/generated-native";
 import React from "react";
 
 export const FOOTER_LINKS = {
@@ -7,17 +6,17 @@ export const FOOTER_LINKS = {
     {
       title: "PRODUCT",
       links: [
-        { name: "Features", href: "product" },
-        { name: "How it works", href: "#product" },
-        { name: "Control Center", href: "product" },
+        { name: "Features", href: "#product" },
+        { name: "How it works", href: "#howitworks" }, 
+        { name: "Control Center", href: "#control-center" },
       ],
     },
     {
       title: "SOLUTION",
       links: [
         { name: "Today vs Tomorrow", href: "#solution" },
-        { name: "Who is ClawScan For?", href: "solution" },
-        { name: "Built for Groups", href: "#solution" },
+        { name: "Who is ClawScan For?", href: "#solutions" },
+        { name: "Built for Groups", href: "#groups-section" },
       ],
     },
     {
@@ -31,15 +30,35 @@ export const FOOTER_LINKS = {
     {
       title: "LEGAL",
       links: [
-        { name: "Privacy Policy", href: "https://cdn.prod.website-files.com/62ff80020dcd94f942850d9b/65835af766115483856550c8_GOlegal_Privacy%20Policy_20231220.pdf"  },
-        { name: "Website Terms of Use", href: "https://cdn.prod.website-files.com/62ff80020dcd94f942850d9b/6583595bca165e8071f0458f_GOlegal_Website%20Terms%20of%20Use_20231220.pdf" },
-        { name: "Cookie Policy", href: "https://cdn.prod.website-files.com/62ff80020dcd94f942850d9b/6583595bca165e8071f0458f_GOlegal_Website%20Terms%20of%20Use_20231220.pdf" },
+        { 
+          name: "Privacy Policy", 
+          href: "https://cdn.prod.website-files.com/62ff80020dcd94f942850d9b/65835af766115483856550c8_GOlegal_Privacy%20Policy_20231220.pdf",
+          target: "_blank",
+          rel: "noopener noreferrer"
+        },
+        { 
+          name: "Website Terms of Use", 
+          href: "https://cdn.prod.website-files.com/62ff80020dcd94f942850d9b/6583595bca165e8071f0458f_GOlegal_Website%20Terms%20of%20Use_20231220.pdf",
+          target: "_blank",
+          rel: "noopener noreferrer"
+        },
+        { 
+          name: "Cookie Policy", 
+          href: "https://cdn.prod.website-files.com/62ff80020dcd94f942850d9b/6583595bca165e8071f0458f_GOlegal_Website%20Terms%20of%20Use_20231220.pdf",
+          target: "_blank",
+          rel: "noopener noreferrer"
+        },
       ],
     },
   ],
-  // Social Media Icons (placeholders)
+  // Social Media Icons
   socials: [
-    { icon: "linkedin", href: "https://www.linkedin.com/company/golegal/posts/?feedView=all" },
+    { 
+      icon: "linkedin", 
+      href: "https://www.linkedin.com/company/clawscan",
+      target: "_blank",
+      rel: "noopener noreferrer"
+    },
   ],
 };
 

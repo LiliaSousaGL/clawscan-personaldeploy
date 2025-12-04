@@ -5,7 +5,7 @@ import { GROUPS_ITEMS } from "../content/groupsData";
 
 export const GroupsSection = () => {
   return (
-    <section className="py-24  border-t border-white/5 pb-32">
+    <section id="groups-section" className="py-24 border-t border-white/5 pb-32">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
@@ -14,7 +14,7 @@ export const GroupsSection = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-highlight-100  font-bold tracking-widest text-xs uppercase mb-4"
+            className="text-highlight-100 font-bold tracking-widest text-xs uppercase mb-4"
           >
             Built for Groups
           </motion.div>
@@ -47,10 +47,10 @@ export const GroupsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="p-8 rounded-2xl bg-[#0f0f0f] border border-white/10 hover:border-blue-500/30 transition-colors group text-center"
+              className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/30 transition-colors group text-center"
             >
-              {/* Icon */}
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/10 text-blue-400 mb-6 group-hover:scale-110 transition-transform">
+              {/* Icon - Increased scale on hover */}
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/10 text-blue-400 mb-6 group-hover:scale-135 transition-transform">
                 {item.icon}
               </div>
 

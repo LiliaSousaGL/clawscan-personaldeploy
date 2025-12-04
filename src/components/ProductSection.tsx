@@ -12,6 +12,14 @@ export const ProductSection = () => {
         
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-highlight-100 font-bold tracking-widest text-xs uppercase mb-4"
+          >
+            PRODUCT
+          </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

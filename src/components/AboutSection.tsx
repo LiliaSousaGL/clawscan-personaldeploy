@@ -1,13 +1,12 @@
-// src/components/AboutSection.tsx
 "use client";
 
-import React, { useState } from "react"; // 📌 Import useState
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ABOUT_CONTENT } from "../content/aboutData";
 
-// Simple Icon Helper (Remains the same)
+// Simple Icon Helper
 const Icon = ({ name }: { name: string }) => {
   if (name === "mail") return <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>;
   if (name === "phone") return <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>;
@@ -15,11 +14,10 @@ const Icon = ({ name }: { name: string }) => {
   return null;
 };
 
-// 📌 NEW: Map Modal Component
+// Map Modal Component
 const MapModal = ({ isOpen, onClose, address }: { isOpen: boolean; onClose: () => void; address: string }) => {
   if (!isOpen) return null;
 
-  // Encode the address for the Google Maps URL
   const encodedAddress = encodeURIComponent(address);
   const mapUrl = `https://maps.google.com/maps?q=${encodedAddress}&output=embed`;
 
@@ -43,7 +41,6 @@ const MapModal = ({ isOpen, onClose, address }: { isOpen: boolean; onClose: () =
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
         </button>
         
-        {/* Map iframe */}
         <iframe
           src={mapUrl}
           width="100%"
@@ -62,25 +59,45 @@ const MapModal = ({ isOpen, onClose, address }: { isOpen: boolean; onClose: () =
   );
 };
 
-
 export const AboutSection = () => {
-  // 📌 State to manage the map popup
   const [isMapOpen, setIsMapOpen] = useState(false);
   const officeAddress = ABOUT_CONTENT.contact.cards.find(c => c.icon === 'map')?.description || "Cours Saint Michel 30A, 1040 Brussels, Belgium";
   
   const handleMapClick = (e: React.MouseEvent) => {
-      e.preventDefault(); // Prevent page scroll
+      e.preventDefault(); 
       setIsMapOpen(true);
   };
+
+
+  useEffect(() => {
+    const scriptUrl = "https://webforms.pipedrive.com/f/loader";
+    
+    // Remove existing script if it exists to force re-execution
+    const existingScript = document.querySelector(`script[src="${scriptUrl}"]`);
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    // Create and append the new script
+    const script = document.createElement("script");
+    script.setAttribute("src", scriptUrl);
+    script.async = true;
+    document.body.appendChild(script);
+
+    // Cleanup on unmount
+    return () => {
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+    };
+  }, []);
 
   return (
     <section id="aboutus" className="py-24 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* --- PART 1: THE MINDS BEHIND (Split Layout) --- */}
+        {/* --- PART 1: THE MINDS BEHIND --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-32">
-          {/* ... (Existing code for text and GOlegal logo card) ... */}
-
           {/* Left: Text Content */}
           <motion.div
              initial={{ opacity: 0, x: -20 }}
@@ -106,16 +123,16 @@ export const AboutSection = () => {
             </Link>
           </motion.div>
 
-          {/* Right: GOlegal Card/Placeholder */}
+          {/* Right: GOlegal Card */}
           <motion.div
              initial={{ opacity: 0, x: 20 }}
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true }}
              transition={{ delay: 0.2 }}
-             className="h-64 md:h-80 bg-[#0f1115] rounded-2xl border border-white/5 flex items-center justify-center p-8"
+             className="h-64 md:h-80  rounded-2xl border border-white/5 flex items-center justify-center p-8"
           >
             <Image 
-              src="/images/GOlegalLogo-2.png" 
+              src="/images/golegalLogo.png" 
               alt={ABOUT_CONTENT.about.logoText} 
               width={350}
               height={100}
@@ -124,62 +141,89 @@ export const AboutSection = () => {
         </div>
 
 
-        {/* --- PART 2: GET IN TOUCH (Grid Layout) --- */}
+        {/* --- PART 2: GET IN TOUCH --- */}
         <div className="text-center mb-16">
-           <div className="text-highlight-100 font-bold tracking-widest text-xs uppercase mb-4">
-              {ABOUT_CONTENT.contact.label}
-           </div>
-           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {ABOUT_CONTENT.contact.title}
-           </h2>
-           <p className="text-gray-400 max-w-2xl mx-auto">
-              {ABOUT_CONTENT.contact.subtitle}
-           </p>
+            <div className="text-highlight-100 font-bold tracking-widest text-xs uppercase mb-4">
+                {ABOUT_CONTENT.contact.label}
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                {ABOUT_CONTENT.contact.title}
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+                {ABOUT_CONTENT.contact.subtitle}
+            </p>
         </div>
 
-        {/* 📌 FIX: Changed to md:grid-cols-2 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> 
-          {ABOUT_CONTENT.contact.cards.map((card, index) => (
+        {/* Contact Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16"> 
+            {ABOUT_CONTENT.contact.cards.map((card, index) => (
             <motion.div
-              key={card.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="p-8 rounded-xl bg-[#0b0c0e] border border-white/5 hover:border-white/10 transition-colors"
+                key={card.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="p-8 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors"
             >
-              <div className="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center text-highlight-100 mb-6">
+                <div className="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center text-highlight-100 mb-6">
                 <Icon name={card.icon} />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">{card.title}</h3>
-              <p className="text-gray-400 text-sm mb-4 leading-relaxed h-10">
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">{card.title}</h3>
+                <p className="text-gray-400 text-sm mb-4 leading-relaxed h-10">
                 {card.description}
-              </p>
-              
-              {/* Conditional link rendering for map popup */}
-              {card.icon === 'map' ? (
+                </p>
+                
+                {card.icon === 'map' ? (
                 <a 
-                  href="#" // Link is handled by the onClick event
-                  onClick={handleMapClick}
-                  className="text-highlight-100 font-medium hover:text-blue-300 text-sm transition-colors"
+                    href="#"
+                    onClick={handleMapClick}
+                    className="text-highlight-100 font-medium hover:text-blue-300 text-sm transition-colors"
                 >
-                  {card.actionText}
+                    {card.actionText}
                 </a>
-              ) : (
+                ) : (
                 <a 
-                  href={card.href} 
-                  className="text-highlight-100 font-medium hover:text-blue-300 text-sm transition-colors"
+                    href={card.href} 
+                    className="text-highlight-100 font-medium hover:text-blue-300 text-sm transition-colors"
                 >
-                  {card.actionText}
+                    {card.actionText}
                 </a>
-              )}
+                )}
             </motion.div>
-          ))}
+            ))}
+        </div>
+
+        {/* --- PART 3: THE EMBEDDED FORM --- */}
+        {/* The ID 'contact' is placed here for scroll targeting */}
+        <div id="contact" className="scroll-mt-32"> 
+            <motion.div
+                initial={{ opacity: 0, scale: 0.98 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-white/5 border border-white/10 p-6 md:p-10 rounded-xl max-w-4xl mx-auto"
+            >
+                <h3 className="text-2xl font-semibold text-white mb-6 text-center">
+                   Send us an email
+                </h3>
+
+                <div className="w-full min-h-[400px] flex justify-center">
+                {/* Pipedrive Form Container */}
+                <div 
+                    className="pipedriveWebForms w-full" 
+                    data-pd-webforms="https://webforms.pipedrive.com/f/czB6kfSUP47QQ6DUiPGb0mOHB33foUK8gCqdoksXbaT9STXOgclTLdLwlbA3lbYhhx" 
+                />
+                </div>
+
+                <p className="text-xs text-gray-500 mt-6 text-center">
+                We respect your privacy. No spam. You will be contacted by a dedicated compliance expert.
+                </p>
+            </motion.div>
         </div>
 
       </div>
       
-      {/* 📌 NEW: Render the Map Modal */}
+      {/* Map Modal */}
       <MapModal 
           isOpen={isMapOpen} 
           onClose={() => setIsMapOpen(false)} 

@@ -5,11 +5,19 @@ import { CONTROL_ITEMS } from "../content/controlCenterData";
 
 export const ControlCenter = () => {
   return (
-    <section className="py-24 border-t border-white/5">
+    <section id="control-center" className="py-24 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header Text */}
         <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-highlight-100 font-bold tracking-widest text-xs uppercase mb-4"
+          >
+            PRODUCT
+          </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

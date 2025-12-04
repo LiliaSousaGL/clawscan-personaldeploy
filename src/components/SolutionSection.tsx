@@ -3,13 +3,92 @@
 import { motion } from "framer-motion";
 import { SOLUTION_STEPS } from "../content/solutionSteps";
 
+// --- ANIMATION COMPONENTS ---
+
+const IngestAnimation = () => (
+  <div className="relative w-full h-full flex items-center justify-center bg-blue-900/5 overflow-hidden">
+    {/* Server Icon */}
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-white/20 z-10">
+      <rect x="2" y="2" width="20" height="8" rx="2" ry="2" strokeWidth="2" />
+      <rect x="2" y="14" width="20" height="8" rx="2" ry="2" strokeWidth="2" />
+      <line x1="6" y1="6" x2="6.01" y2="6" strokeWidth="3" />
+      <line x1="6" y1="18" x2="6.01" y2="18" strokeWidth="3" />
+    </svg>
+    {/* Moving Particles */}
+    {[0, 1, 2].map((i) => (
+      <motion.div
+        key={i}
+        className="absolute w-1.5 h-1.5 bg-highlight-100 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.8)]"
+        initial={{ x: -50, opacity: 0 }}
+        animate={{ x: 0, opacity: [0, 1, 1, 0] }}
+        transition={{ duration: 2, repeat: Infinity, delay: i * 0.6, ease: "linear" }}
+      />
+    ))}
+  </div>
+);
+
+const AnalyzeAnimation = () => (
+  <div className="relative w-full h-full flex items-center justify-center bg-blue-900/5">
+    {/* Document */}
+    <div className="w-20 h-28 bg-white/5 border border-white/10 rounded flex flex-col gap-2 p-2 overflow-hidden relative">
+       <div className="w-3/4 h-1.5 bg-white/10 rounded" />
+       <div className="w-full h-1.5 bg-white/10 rounded" />
+       {/* Risky Line */}
+       <motion.div 
+         className="w-5/6 h-1.5 rounded"
+         animate={{ backgroundColor: ["rgba(255,255,255,0.1)", "rgba(239,68,68,0.8)", "rgba(255,255,255,0.1)"] }}
+         transition={{ duration: 2, repeat: Infinity, times: [0, 0.5, 1] }}
+       />
+       <div className="w-1/2 h-1.5 bg-white/10 rounded" />
+    </div>
+    {/* Scanner Beam */}
+    <motion.div
+      className="absolute w-24 h-0.5 bg-highlight-100 shadow-[0_0_10px_rgba(59,130,246,1)]"
+      animate={{ top: ["20%", "80%", "20%"] }}
+      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+    />
+  </div>
+);
+
+const ReportAnimation = () => (
+  <div className="relative w-full h-full flex items-center justify-center bg-blue-900/5">
+     {/* Dashboard Base */}
+     <div className="w-28 h-20 bg-white/5 border border-white/10 rounded flex items-center justify-center relative">
+        <div className="w-full h-full grid grid-cols-2 gap-1 p-2">
+            <div className="bg-white/5 rounded" />
+            <div className="bg-white/5 rounded" />
+            <div className="col-span-2 bg-white/5 rounded" />
+        </div>
+        
+        {/* Alert Icon Pop */}
+        <motion.div
+          className="absolute -top-2 -right-2 bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center shadow-lg border border-red-400 z-10"
+          initial={{ scale: 0 }}
+          animate={{ scale: [0, 1.2, 1], opacity: [0, 1, 1] }}
+          transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+        >
+          <span className="font-bold text-xs">!</span>
+        </motion.div>
+     </div>
+  </div>
+);
+
+
 export const SolutionSection = () => {
   return (
-    <section id="howitworks" className="py-24  relative border-t border-white/5">
+    <section id="howitworks" className="py-24 relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* 1. Header */}
         <div className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-highlight-100 font-bold tracking-widest text-xs uppercase mb-4"
+          >
+            PRODUCT
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -23,7 +102,7 @@ export const SolutionSection = () => {
         {/* 2. Three Steps Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20 relative">
           
-          {/* Connector Line (Desktop Only) - Optional visual flair */}
+          {/* Connector Line (Desktop Only) */}
           <div className="hidden md:block absolute top-8 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-blue-900/0 via-blue-500/20 to-blue-900/0 -z-10" />
 
           {SOLUTION_STEPS.map((step, index) => (
@@ -36,28 +115,28 @@ export const SolutionSection = () => {
               className="flex flex-col items-center text-center"
             >
               {/* Icon Circle */}
-              <div className="w-16 h-16 rounded-full border border-highlight-800/20 flex items-center justify-center text-highlight-100 mb-6 shadow-[0_0_15px_rgba(59,130,246,0.2)] z-10">
+              <div className="w-16 h-16 rounded-full border border-highlight-800/20 flex items-center justify-center text-highlight-100 mb-6 shadow-[0_0_15px_rgba(59,130,246,0.2)] z-10 bg-[#0f1115]">
                 {step.icon}
               </div>
 
               {/* Text */}
               <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
-              <p className="text-sm text-gray-400 leading-relaxed mb-8 max-w-xs">
+              <p className="text-sm text-gray-400 leading-relaxed mb-8 max-w-xs h-16">
                 {step.description}
               </p>
 
-              {/* Animation Placeholder Box */}
-              <div className="w-full aspect-video bg-white/5 rounded-lg border border-white/10 flex items-center justify-center relative overflow-hidden group">
-                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                 <span className="text-xs text-gray-600 font-mono uppercase tracking-widest">
-                   (Animation Placeholder)
-                 </span>
+              {/* Animation Box */}
+              <div className="w-full aspect-video bg-black/40 rounded-lg border border-white/10 flex items-center justify-center relative overflow-hidden group">
+                 {/* Conditionally Render Animations based on Index */}
+                 {index === 0 && <IngestAnimation />}
+                 {index === 1 && <AnalyzeAnimation />}
+                 {index === 2 && <ReportAnimation />}
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* 3. Security Banner ("Your Data, Your Control") */}
+        {/* 3. Security Banner */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}

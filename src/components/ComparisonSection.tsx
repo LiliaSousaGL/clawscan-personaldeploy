@@ -23,14 +23,31 @@ export const ComparisonSection = () => {
         
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
+          
+          {/* 1. CHANGED: Label with decorative quotes */}
+{/* 1. UPDATED LABEL: Italic, Bold, and Clean Quotes */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-highlight-100 font-bold tracking-widest text-xs uppercase mb-4"
+            className="flex items-center justify-center gap-3 mb-6" // Flexbox keeps them aligned
           >
-            {COMPARISON_CONTENT.header.label}
+             {/* Opening Quote - Same font family, just bigger */}
+            <span className="text-4xl text-highlight-100 font-bold leading-none">
+              “
+            </span>
+
+            {/* The Label - Italicized as requested */}
+            <span className="text-highlight-100 font-bold italic tracking-widest text-sm uppercase">
+              {COMPARISON_CONTENT.header.label}
+            </span>
+
+             {/* Closing Quote */}
+            <span className="text-4xl text-highlight-100 font-bold leading-none">
+              ”
+            </span>
           </motion.div>
+
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -87,10 +104,10 @@ export const ComparisonSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="p-8 rounded-2xl bg-[#0f0f0f] border border-blue-500/30 shadow-[0_0_40px_-10px_rgba(59,130,246,0.15)] relative overflow-hidden"
+            className="p-8 rounded-2xl bg-[#0f0f0f] border border-blue-500/50 shadow-[0_0_120px_-30px_rgba(59,130,246,0.5)] relative overflow-hidden"
           >
             {/* Subtle Gradient Glow */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute top-1/2 left-1/2 w-[48rem] h-[48rem] bg-blue-500/15 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
 
             <h3 className="text-2xl font-bold text-white mb-8 relative z-10">
               {COMPARISON_CONTENT.cards.solution.title}
@@ -99,7 +116,7 @@ export const ComparisonSection = () => {
               {COMPARISON_CONTENT.cards.solution.items.map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div className="p-2 rounded-lg bg-blue-500/20 text-blue-400 shrink-0">
-                     <Icon name={item.icon} />
+                      <Icon name={item.icon} />
                   </div>
                   <p className="text-gray-300 text-sm md:text-base leading-relaxed mt-0.5">
                     {item.text}

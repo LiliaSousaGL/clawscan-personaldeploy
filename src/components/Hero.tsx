@@ -19,6 +19,14 @@ const itemVariants = {
 };
 
 export const Hero = () => {
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
   return (
     <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-20 pb-16  border-b border-white/5">
       
@@ -52,12 +60,10 @@ export const Hero = () => {
           variants={itemVariants}
           className="flex flex-col sm:flex-row items-center gap-4"
         >
-          <Link href="https://webforms.pipedrive.com/f/czB6kfSUP47QQ6DUiPGb0mOHB33foUK8gCqdoksXbaT9STXOgclTLdLwlbA3lbYhhx" passHref>
-            <Button primary>
-              
-              Request a demo
-            </Button>
-          </Link>
+          <Button primary onClick={scrollToContact}>
+            Request a demo
+          </Button>
+
           
           <Link href="#howitworks" passHref >
             <Button>

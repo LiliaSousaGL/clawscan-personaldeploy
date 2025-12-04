@@ -45,3 +45,7 @@ body {
 .max-w-2xl {
     max-width: fit-content;
 }
+
+.gap-y-3 {
+    row-gap: 0;
+}

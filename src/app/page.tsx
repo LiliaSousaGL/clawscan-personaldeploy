@@ -1,4 +1,3 @@
-// src/app/page.tsx
 import { Hero } from "../components/Hero";
 import { ClientLogos } from "../components/ClientLogos";
 import { ProductSection } from "../components/ProductSection";
@@ -9,8 +8,7 @@ import { AudienceSection } from "../components/AudienceSection";
 import { GroupsSection } from "../components/GroupsSection";
 import { PricingSection } from "../components/PricingSection";
 import { FAQSection } from "../components/FAQSection";
-import { ContactSection } from "../components/ContactSection";
-import { AboutSection } from "../components/AboutSection"; // <--- Import New Component
+import { AboutSection } from "../components/AboutSection"; 
 
 export default function Home() {
   return (
@@ -29,15 +27,13 @@ export default function Home() {
 
       {/* Pricing Content */}
       <PricingSection />
-
-      {/* About & Contact Info (Placed before FAQ) */}
-      <AboutSection />
       
       {/* FAQ Content */}
       <FAQSection />
 
-      {/* Final Call to Action Form */}
-      <ContactSection />
+      {/* About & Contact Info (Contains Form) */}
+      <AboutSection />
+
     </div>
   );
 }
