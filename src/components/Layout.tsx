@@ -36,7 +36,7 @@ export const Layout = ({ children }: LayoutProps) => {
       </main>
 
       {/* DETAILED FOOTER STRUCTURE */}
-      <footer className="border-t border-white/10 pt-16 pb-8 text-white ">
+      <footer className="border-t border-white/10 pt-16 pb-8 text-white">
         <div className="max-w-7xl mx-auto px-6">
           
           {/* Top Section: Logo & Links */}
@@ -44,23 +44,23 @@ export const Layout = ({ children }: LayoutProps) => {
             
             {/* Logo/Branding Column (Col 1 & 2 on Desktop) */}
             <div className="col-span-2 space-y-4">
-          <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/images/clawscanlogo-img.png"
-              alt="ClawScan Logo"
-              width={100} 
-              height={100}
-              className="object-contain"
-            />
-            <Image
-              src="/images/clawscanlogo-text.png"
-              alt="ClawScan Logo"
-              width={110} 
-              height={80}
-              className="object-contain "
-              style={{ marginTop: '5px' }}
-            />
-          </Link>
+              <Link href="/" className="flex items-center gap-2">
+                <Image
+                  src="/images/clawscanlogo-img.png"
+                  alt="ClawScan Logo"
+                  width={60} 
+                  height={60}
+                  className="object-contain"
+                />
+                 <Image
+                  src="/images/clawscanlogo-text.png"
+                  alt="ClawScan Logo"
+                  width={110} 
+                  height={80}
+                  className="object-contain "
+                  style={{ marginTop: '10px' }}
+                />
+              </Link>
               <p className="text-gray-400 text-sm max-w-xs">
                 AI-powered email screening for modern legal compliance.
               </p>
@@ -74,19 +74,30 @@ export const Layout = ({ children }: LayoutProps) => {
                 </h3>
                 <ul className="space-y-3">
                   {column.links.map((link, linkIndex) => {
-                    const isExternal = link.target === "_blank" || link.href.startsWith("http");
+                    // FIX: Cast link to 'any' to safely access optional properties like target/rel
+                    const linkAny = link as any;
+                    const isExternal = linkAny.target === "_blank" || link.href.startsWith("http");
 
                     return (
                       <li key={linkIndex}>
-                        <Link 
-                          href={link.href}
-                          target={link.target}
-                          rel={link.rel}
-                          onClick={(e) => !isExternal && handleSmoothScroll(e, link.href)}
-                          className="text-sm text-gray-400 hover:text-white transition-colors block"
-                        >
-                          {link.name}
-                        </Link>
+                        {isExternal ? (
+                          <a 
+                            href={link.href}
+                            target={linkAny.target}
+                            rel={linkAny.rel}
+                            className="text-sm text-gray-400 hover:text-white transition-colors block"
+                          >
+                            {link.name}
+                          </a>
+                        ) : (
+                          <Link 
+                            href={link.href}
+                            onClick={(e) => handleSmoothScroll(e, link.href)}
+                            className="text-sm text-gray-400 hover:text-white transition-colors block"
+                          >
+                            {link.name}
+                          </Link>
+                        )}
                       </li>
                     );
                   })}
