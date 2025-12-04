@@ -129,7 +129,7 @@ export const AboutSection = () => {
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true }}
              transition={{ delay: 0.2 }}
-             className="h-64 md:h-80  rounded-2xl border border-white/5 flex items-center justify-center p-8"
+             className="h-64 md:h-80 bg-[#0f1115] rounded-2xl border border-white/5 flex items-center justify-center p-8"
           >
             <Image 
               src="/images/golegalLogo.png" 
@@ -193,8 +193,7 @@ export const AboutSection = () => {
             ))}
         </div>
 
-        {/* --- PART 3: THE EMBEDDED FORM --- */}
-        {/* The ID 'contact' is placed here for scroll targeting */}
+
         <div id="contact" className="scroll-mt-32"> 
             <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
@@ -203,6 +202,10 @@ export const AboutSection = () => {
                 transition={{ duration: 0.5 }}
                 className="bg-white/5 border border-white/10 p-6 md:p-10 rounded-xl max-w-4xl mx-auto"
             >
+
+                <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center text-highlight-100 mb-6 mx-auto">
+                    <Icon name="mail" />
+                </div>
                 <h3 className="text-2xl font-semibold text-white mb-6 text-center">
                    Send us an email
                 </h3>

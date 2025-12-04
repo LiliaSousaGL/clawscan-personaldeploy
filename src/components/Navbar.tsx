@@ -5,16 +5,26 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
+// Improved Smooth Scroll Function
 const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
   e.preventDefault();
-  const targetId = href.substring(1);
+  
+  // 1. Extract ID safely
+  const targetId = href.replace('#', '');
   const targetElement = document.getElementById(targetId);
 
   if (targetElement) {
+    // 2. Use getBoundingClientRect for absolute precision relative to viewport
+    //    This fixes issues where 'offsetTop' is 0 because of parent containers
+    const elementPosition = targetElement.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.scrollY - 80; // 80px offset for header + breathing room
+
     window.scrollTo({
-      top: targetElement.offsetTop - 64, // Keeps the offset for the fixed header
+      top: offsetPosition,
       behavior: "smooth",
     });
+  } else {
+    console.warn(`⚠️ Navbar: Element with id "${targetId}" not found. Make sure your sections have the correct IDs.`);
   }
 };
 
@@ -74,8 +84,12 @@ export const Navbar = () => {
   ];
 
   const handleMobileLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    handleSmoothScroll(e, href);
+    // 1. Close menu first
     setIsMobileMenuOpen(false); 
+    // 2. Then scroll (slight delay ensures menu closing doesn't glitch the calculation)
+    setTimeout(() => {
+        handleSmoothScroll(e, href);
+    }, 100);
   };
 
   return (
@@ -133,7 +147,7 @@ export const Navbar = () => {
             {/* 1. UPDATED: Changed from Link to Button to trigger modal */}
             <button
               onClick={() => setIsLoginModalOpen(true)}
-              className="bg-gray-700 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-600 transition-colors"
+              className="bg-white/10 hover:bg-white/20 text-center text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-600 transition-colors"
             >
               Log In
             </button>
@@ -161,7 +175,7 @@ export const Navbar = () => {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="md:hidden overflow-hidden bg-[#0a0a0a] border-b border-white/10"
+              className="md:hidden overflow-hidden  border-b border-white/10"
             >
               <div className="flex flex-col p-6 space-y-4">
                 {navLinks.map((link) => (
@@ -169,13 +183,13 @@ export const Navbar = () => {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => handleMobileLinkClick(e, link.href)}
-                    className="text-base font-medium text-gray-300 hover:text-white block"
+                    className="text-base font-medium text-gray-300 hover:text-white block py-2 border-b border-white/5"
                   >
                     {link.name}
                   </Link>
                 ))}
                 
-                <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
+                <div className="pt-4 flex flex-col gap-3">
                   <Link
                     href="#contact"
                     onClick={(e) => handleMobileLinkClick(e, "#contact")}
@@ -190,7 +204,7 @@ export const Navbar = () => {
                       setIsMobileMenuOpen(false);
                       setIsLoginModalOpen(true);
                     }}
-                    className="bg-gray-800 text-center text-white px-4 py-3 rounded-lg text-sm font-semibold w-full"
+                    className="bg-white/10 hover:bg-white/20 text-center text-white px-4 py-3 rounded-lg text-sm font-semibold w-full transition-colors"
                   >
                     Log In
                   </button>

@@ -31,7 +31,7 @@ export const FOOTER_LINKS = {
       title: "LEGAL",
       links: [
         { 
-          name: "Privacy Policy", 
+          name: "Privacy Notice", 
           href: "https://cdn.prod.website-files.com/62ff80020dcd94f942850d9b/65835af766115483856550c8_GOlegal_Privacy%20Policy_20231220.pdf",
           target: "_blank",
           rel: "noopener noreferrer"
@@ -43,8 +43,8 @@ export const FOOTER_LINKS = {
           rel: "noopener noreferrer"
         },
         { 
-          name: "Cookie Policy", 
-          href: "https://cdn.prod.website-files.com/62ff80020dcd94f942850d9b/6583595bca165e8071f0458f_GOlegal_Website%20Terms%20of%20Use_20231220.pdf",
+          name: "Cookie Notice", 
+          href: "https://cdn.prod.website-files.com/62ff80020dcd94f942850d9b/65835b064cd52323ad63313c_GOlegal_Cookie%20Policy_20231220.pdf",
           target: "_blank",
           rel: "noopener noreferrer"
         },

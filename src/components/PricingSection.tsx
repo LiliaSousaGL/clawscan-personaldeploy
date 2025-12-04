@@ -116,7 +116,7 @@ export const PricingSection = () => {
             // Changed: max-w-3xl to make table narrower
             className="bg-white/5 border border-white/10 rounded-xl overflow-hidden mb-12 max-w-2xl mx-auto shadow-2xl"
         >
-            <div className="grid grid-cols-12 gap-4 p-6 border-b border-white/10 bg-white/5 text-xs font-bold text-highlight-100 uppercase tracking-wider">
+            <div className="grid grid-cols-12 gap-2 md:gap-4 p-4 md:p-6 border-b border-white/10 bg-white/5 text-[10px] md:text-xs font-bold text-highlight-100 uppercase tracking-wider">
                 <div className="col-span-3 md:col-span-2">Tier</div>
                 <div className="col-span-4 md:col-span-3">Annual VUs</div>
                 <div className="col-span-5 md:col-span-7">Best For</div>
@@ -125,7 +125,7 @@ export const PricingSection = () => {
             {PRICING_CONTENT.tiers.map((tier, index) => (
                 <div 
                     key={tier.name} 
-                    className={`grid grid-cols-12 gap-4 p-6 text-sm items-center ${
+                    className={`grid grid-cols-12 gap-2 md:gap-4 p-4 md:p-6 text-xs md:text-sm items-center ${
                         index !== PRICING_CONTENT.tiers.length - 1 ? 'border-b border-white/5' : ''
                     } hover:bg-white/[0.02] transition-colors`}
                 >
@@ -138,13 +138,20 @@ export const PricingSection = () => {
 
         {/* 5. Footer Notes & CTA */}
         <div className="text-center">
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-[15px] md:text-s text-gray-500 mb-12 max-w-4xl mx-auto">
-                {PRICING_CONTENT.footer.notes.map((note, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                         <div className="w-1.5 h-1.5 rounded-full bg-blue-500/50" />
-                         {note}
-                    </div>
-                ))}
+            {/* Hybrid Layout: Vertical list on mobile, Centered cloud on desktop */}
+            <div className="flex justify-center mb-12">
+                <div className="
+                    flex flex-col gap-3 text-left max-w-lg mx-auto
+                    md:flex-row md:flex-wrap md:justify-center md:gap-x-8 md:gap-y-3 md:max-w-4xl md:items-center
+                "> 
+                    {PRICING_CONTENT.footer.notes.map((note, i) => (
+                        <div key={i} className="flex items-start gap-3 md:items-center md:gap-2">
+                              {/* Dot: aligned top on mobile, centered on desktop */}
+                              <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 md:mt-0 shrink-0 opacity-70" />
+                              <span className="text-sm md:text-base text-gray-400 leading-relaxed">{note}</span>
+                        </div>
+                    ))}
+                </div>
             </div>
 
             {/* CTA Button */}
@@ -157,7 +164,7 @@ export const PricingSection = () => {
                     Get a Tailored Quote
                 </Button>
             </motion.div>
-             <p className="text-s text-gray-600 mt-6">
+             <p className="text-s text-gray-600 mt-6 max-w-2xl mx-auto">
                 ClawScan runs fully inside your Microsoft tenant. No email content ever leaves your environment.
             </p>
         </div>

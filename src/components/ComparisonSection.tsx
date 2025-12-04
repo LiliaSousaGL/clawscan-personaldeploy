@@ -24,28 +24,14 @@ export const ComparisonSection = () => {
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           
-          {/* 1. CHANGED: Label with decorative quotes */}
-{/* 1. UPDATED LABEL: Italic, Bold, and Clean Quotes */}
+
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center gap-3 mb-6" // Flexbox keeps them aligned
+            className="text-highlight-100 font-bold tracking-widest text-xs uppercase mb-4"
           >
-             {/* Opening Quote - Same font family, just bigger */}
-            <span className="text-4xl text-highlight-100 font-bold leading-none">
-              “
-            </span>
-
-            {/* The Label - Italicized as requested */}
-            <span className="text-highlight-100 font-bold italic tracking-widest text-sm uppercase">
-              {COMPARISON_CONTENT.header.label}
-            </span>
-
-             {/* Closing Quote */}
-            <span className="text-4xl text-highlight-100 font-bold leading-none">
-              ”
-            </span>
+            TODAY VS TOMORROW
           </motion.div>
 
           <motion.h2 
@@ -129,16 +115,18 @@ export const ComparisonSection = () => {
         </div>
 
         {/* Bottom Quote */}
-        <div className="text-center">
-          <motion.h3
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="text-2xl md:text-3xl font-semibold text-white max-w-3xl mx-auto leading-tight"
-          >
-            "{COMPARISON_CONTENT.quote}"
-          </motion.h3>
-        </div>
+<div className="text-center">
+ <motion.h3
+ initial={{ opacity: 0, scale: 0.95 }}
+ whileInView={{ opacity: 1, scale: 1 }}
+ viewport={{ once: true }}
+  className="text-2xl md:text-3xl font-semibold text-white max-w-3xl mx-auto leading-tight italic" // ADD 'italic' class here
+ >
+ <span className="text-5xl md:text-7xl text-gray-600/50 mr-2 relative top-2">“</span>
+ {COMPARISON_CONTENT.quote}
+ <span className="text-5xl md:text-7xl text-gray-600/50 ml-2 relative bottom-2">”</span>
+ </motion.h3>
+</div>
 
       </div>
     </section>
