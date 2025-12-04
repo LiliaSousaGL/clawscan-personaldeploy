@@ -5,7 +5,7 @@ import { SOLUTION_STEPS } from "../content/solutionSteps";
 
 export const SolutionSection = () => {
   return (
-    <section id="" className="py-24  relative border-t border-white/5">
+    <section id="howitworks" className="py-24  relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* 1. Header */}

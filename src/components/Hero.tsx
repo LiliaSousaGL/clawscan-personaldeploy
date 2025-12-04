@@ -59,7 +59,7 @@ export const Hero = () => {
             </Button>
           </Link>
           
-          <Link href="#solution" passHref >
+          <Link href="#howitworks" passHref >
             <Button>
               See how it works
             </Button>
